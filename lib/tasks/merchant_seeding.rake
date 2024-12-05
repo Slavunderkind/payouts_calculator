@@ -1,10 +1,10 @@
 namespace :db do
   desc "Seed Merchant data from merchants.csv file"
   task seed_merchants: :environment do
-    require 'csv'
+    require "csv"
 
     # Path to the CSV file
-    file_path = Rails.root.join('db', 'seeds', 'merchants.csv')
+    file_path = Rails.root.join("db", "seeds", "merchants.csv")
 
     # Check if the file exists
     unless File.exist?(file_path)
@@ -14,15 +14,15 @@ namespace :db do
 
     puts "Seeding Merchant data from #{file_path}..."
 
-    CSV.foreach(file_path, col_sep: ';', headers: true) do |row|
+    CSV.foreach(file_path, col_sep: ";", headers: true) do |row|
       merchant = Merchant.find_or_create_by(
-        uuid: row['id'],
-        reference: row['reference']
+        uuid: row["id"],
+        reference: row["reference"]
       ) do |merchant|
-        merchant.email = row['email']
-        merchant.live_on = row['live_on']
-        merchant.disbursement_frequency = row['disbursement_frequency']
-        merchant.minimum_monthly_fee = row['minimum_monthly_fee']
+        merchant.email = row["email"]
+        merchant.live_on = row["live_on"]
+        merchant.disbursement_frequency = row["disbursement_frequency"]
+        merchant.minimum_monthly_fee = row["minimum_monthly_fee"]
       end
 
       if merchant.persisted?
