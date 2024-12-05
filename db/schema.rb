@@ -31,7 +31,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_05_213139) do
   create_table "orders", id: :string, force: :cascade do |t|
     t.bigint "merchant_id", null: false
     t.decimal "amount"
-    t.boolean "disbursed"
+    t.boolean "disbursed", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["merchant_id"], name: "index_orders_on_merchant_id"
