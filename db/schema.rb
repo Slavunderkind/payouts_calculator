@@ -28,7 +28,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_05_213139) do
     t.index ["uuid"], name: "index_merchants_on_uuid", unique: true
   end
 
-  create_table "orders", force: :cascade do |t|
+  create_table "orders", id: :string, force: :cascade do |t|
     t.bigint "merchant_id", null: false
     t.decimal "amount"
     t.boolean "disbursed"
