@@ -1,6 +1,6 @@
 class Merchant < ApplicationRecord
-  has_many :orders
-  has_many :disbursements
+  # has_many :orders
+  # has_many :disbursements
 
   validates :uuid, presence: true, uniqueness: true
   validates :reference, presence: true, uniqueness: true
@@ -9,7 +9,7 @@ class Merchant < ApplicationRecord
   validates :disbursement_frequency, presence: true, inclusion: { in: %w[WEEKLY DAILY] }
   validates :minimum_monthly_fee, presence: true, numericality: { greater_than_or_equal_to: 0 }
 
-  before_validation :generate_uuid, on: :create
+  # before_validation :generate_uuid, on: :create
 
   private
 
